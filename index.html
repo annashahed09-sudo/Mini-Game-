@@ -56,20 +56,20 @@
         .bg-element {
             position: absolute;
             pointer-events: none;
-            z-index: 2;
-            width: 85px; 
+            z-index: 2; 
+            width: 110px; 
             height: auto;
         }
 
         .bg-cat {
-            bottom: 5%;
-            right: 5%;
+            bottom: 15%; 
+            right: 12%; 
             animation: gentleFloat 4s ease-in-out infinite;
         }
 
         .bg-cherry {
-            top: 5%;
-            left: 5%;
+            top: 15%;  
+            left: 12%;
             animation: gentleFloat 5s ease-in-out infinite alternate;
         }
 
@@ -284,20 +284,20 @@
     <canvas id="confetti-canvas"></canvas>
 
     <div id="game-screen">
-        <h2 id="level-title">Round 1 of 3: System Logic Check</h2>
+        <h2 id="level-title">Round 1 of 3: Easy Mode</h2>
         <div class="math-box" id="equation-display">5 + 7 = ?</div>
         <input type="number" id="answer-input" class="input-field" placeholder="Type answer here..." autocomplete="off">
         <button class="custom-submit-btn" id="action-btn" onclick="checkAnswer()">
             <img src="button.webp" alt="Submit Answer">
         </button>
         <div id="loading-container">
-            <p class="loading-alert-text">Allocating distance memory channels...</p>
+            <p class="loading-alert-text">Verifying response...</p>
             <div class="progress-bar-bg"><div id="progress-fill"></div><div id="progress-text">0%</div></div>
         </div>
     </div>
 
     <div id="crash-screen">
-        <div class="bsod-title">CRITICAL_SYSTEM_FATAL_ERROR</div>
+        <div class="bsod-title">CRITICAL_SYSTEM_ERROR</div>
         <p class="bsod-text">
             System exception 0x80070002. TOO CUTE BUT TOO FAR :( .<br><br>
             Diagnostic Code: <span style="color: #ea6b94; font-weight: bold;">SYSTEM_OVERLOADED_BY_CUTENESS_OVERLOAD</span>
