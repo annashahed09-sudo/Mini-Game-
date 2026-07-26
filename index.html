@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Challenge v1.0.4</title>
+    <title>SURPRISE</title>
     <style>
-        /* --- PIXEL RESET & GLOBAL CORE STYLE --- */
+        
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Courier New', Courier, monospace;
-            image-rendering: pixelated; /* Forces retro pixel graphics to stay sharp */
+            image-rendering: pixelated; 
         }
 
         body, html {
             width: 100%;
             height: 100%;
-            background-color: #ffdbe4; /* Cohesive pastel pink theme backup color */
+            background-color: #ffdbe4; 
             color: #ffffff;
             display: flex;
             justify-content: center;
@@ -25,11 +25,9 @@
             overflow: hidden;
             position: relative;
             transition: background 1s ease;
-            /* Applies your custom original cursor across the entire screen layout */
             cursor: url('cursor.webp'), auto;
         }
 
-        /* --- GLOBAL STEADY VISUAL ASSET LAYERS --- */
         #bg-art {
             position: absolute;
             top: 0;
@@ -55,24 +53,23 @@
             display: none;
         }
 
-        /* --- ANIMATED FLOATING BACKGROUND MINI-ELEMENTS --- */
         .bg-element {
             position: absolute;
             pointer-events: none;
             z-index: 2;
-            max-width: 90px;
+            width: 160px;
             height: auto;
         }
 
         .bg-cat {
-            bottom: 8%;
-            right: 8%;
+            bottom: 5%;
+            right: 5%;
             animation: gentleFloat 4s ease-in-out infinite;
         }
 
         .bg-cherry {
-            top: 8%;
-            left: 8%;
+            top: 5%;
+            left: 5%;
             animation: gentleFloat 5s ease-in-out infinite alternate;
         }
 
@@ -82,45 +79,42 @@
             100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        /* --- STAGE 1: MATH INTERACTIVE PANEL --- */
         #game-screen {
             text-align: center;
             max-width: 500px;
             width: 90%;
-            padding: 35px 25px;
-            background: rgba(255, 219, 228, 0.92); /* Translucent glass pastel pink panel */
-            border: 5px solid #ea6b94; /* Vivid pixel-art pink outline */
-            box-shadow: 6px 6px 0px #ba486b; /* Hard chunky retro shadow mapping */
+            padding: 40px 30px;
+            background: #ffffff;
+            border: 6px solid #ea6b94; 
+            box-shadow: 8px 8px 0px #ba486b; 
             z-index: 10;
-            backdrop-filter: blur(4px);
         }
 
         h2 {
             font-size: 1.1rem;
             margin-bottom: 25px;
-            color: #000000; /* Crisp black text matching your criteria */
+            color: #000000;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .math-box {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: bold;
             letter-spacing: 2px;
             margin-bottom: 25px;
-            color: #000000; /* Bold black equation display */
-            text-shadow: 2px 2px 0px #ffffff;
+            color: #000000;
         }
 
         .input-field {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             font-size: 1.6rem;
             text-align: center;
-            background-color: #ffffff; /* Clean high-contrast white input core */
+            background-color: #ffffff;
             border: 4px solid #ea6b94;
-            color: #000000; /* Input text rendering black */
+            color: #000000;
             margin-bottom: 25px;
             outline: none;
             font-weight: bold;
@@ -131,7 +125,6 @@
             border-color: #ba486b;
         }
 
-        /* CUSTOM ORIGINAL GRAPHIC SUBMIT ACTION MATRICES */
         .custom-submit-btn {
             background: none;
             border: none;
@@ -152,8 +145,7 @@
         .custom-submit-btn:active {
             transform: scale(0.96) translateY(2px);
         }
-
-        /* TIMED STALL INTERFACE FOR TRICK ROUND */
+        
         #loading-container {
             display: none;
             margin-top: 20px;
@@ -192,27 +184,27 @@
             font-weight: bold;
             font-size: 1rem;
             color: #000000;
-            mix-blend-mode: difference; /* Keeps percentage text visible as bar crosses it */
+            mix-blend-mode: difference;
         }
 
-        /* --- STAGE 2: PINK ERROR BLOCK SYSTEM FAILURE --- */
         #crash-screen {
             display: none;
             width: 100%;
             height: 100%;
             padding: 40px;
-            text-align: left;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: #ffd6e0; /* Custom soft pink "Blue Screen of Death" replacement */
+            background-color: #ffffff; 
             z-index: 20;
             overflow-y: auto;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center; 
         }
 
         .bsod-title {
             background-color: #ea6b94;
-            color: #ffffff; /* Crisp white headers */
+            color: #ffffff;
             display: inline-block;
             padding: 6px 14px;
             margin-bottom: 30px;
@@ -222,23 +214,26 @@
         }
 
         .bsod-text {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.8;
             margin-bottom: 40px;
-            color: #000000; /* Informational diagnostic strings tracking black */
+            color: #000000;
             font-weight: bold;
+            max-width: 750px;
         }
 
         .bsod-btn-wrapper {
-            max-width: 280px;
+            width: 100%;
+            max-width: 260px;
+            display: flex;
+            justify-content: center;
         }
 
-        /* --- STAGE 3: THE ORIGINAL HARMONIOUS WINDOW POPUP --- */
         #reveal-screen {
             display: none;
             width: 440px;
             max-width: 95%;
-            background-color: #fce1e8; /* Exact original system palette tone match */
+            background-color: #fce1e8;
             border: 6px solid #f29cb7;
             padding: 0;
             box-shadow: 0 12px 40px rgba(234, 107, 148, 0.4);
@@ -277,26 +272,24 @@
         .close-button-x { font-weight: bold; color: #e590af; font-size: 1.4rem; }
         .window-content { padding: 25px 20px; text-align: center; }
         .love-headline { font-size: 2.5rem; font-weight: bold; color: #ea6b94; margin-bottom: 25px; letter-spacing: 1px; text-shadow: 2px 2px 0px #ffffff; }
-        .bouquet-frame { max-width: 180px; width: 80%; height: auto; margin: 0 auto 25px auto; display: block; animation: bounceTulips 2s ease-in-out infinite alternate; }
+        .bouquet-frame { max-width: 180px; width: 80%; margin: 0 auto 25px auto; display: block; animation: bounceTulips 2s ease-in-out infinite alternate; }
         @keyframes bounceTulips { 0% { transform: translateY(0px) scale(1); } 100% { transform: translateY(-8px) scale(1.03); } }
         .bottom-tag-container { display: inline-block; border: 4px solid #f29cb7; background-color: #ffffff; padding: 10px 20px; margin-top: 10px; box-shadow: 4px 4px 0px #f29cb7; }
         .developer-text { color: #ea6b94; font-weight: bold; font-size: 1rem; }
     </style>
 </head>
 <body>
-    <!-- Visual Assets & Backgrounds -->
     <div id="bg-art"></div>
-    <img src="cat.webp" class="bg-element bg-cat" alt="Animated Cute Cat">
-    <img src="cherry.webp" class="bg-element bg-cherry" alt="Animated Cherry Blossom">
+    <img src="cat.webp" class="bg-element bg-cat" alt="Cat background">
+    <img src="cherry.webp" class="bg-element bg-cherry" alt="Cherry background">
     <canvas id="confetti-canvas"></canvas>
 
-    <!-- STAGE 1: Math Test -->
     <div id="game-screen">
         <h2 id="level-title">Round 1 of 3: System Logic Check</h2>
         <div class="math-box" id="equation-display">5 + 7 = ?</div>
         <input type="number" id="answer-input" class="input-field" placeholder="Type answer here..." autocomplete="off">
         <button class="custom-submit-btn" id="action-btn" onclick="checkAnswer()">
-            <img src="button.webp" alt="Submit Answer">
+            <img src="button.webp" alt="Submit">
         </button>
         <div id="loading-container">
             <p class="loading-alert-text">Allocating distance memory channels...</p>
@@ -304,33 +297,34 @@
         </div>
     </div>
 
-    <!-- STAGE 2: Error Screen -->
     <div id="crash-screen">
         <div class="bsod-title">CRITICAL_SYSTEM_FATAL_ERROR</div>
         <p class="bsod-text">
-            System exception 0x80070002. Math_core.sys halted at 99%.<br>
-            Diagnostic: <span style="color: #ea6b94; font-weight: bold;">SYSTEM_OVERLOADED_BY_HOW_HANDSOME_YOU_ARE</span>
+            System exception 0x80070002. <br>
+            Hardware Diagnostic Code: <span style="color: #ea6b94; font-weight: bold;">SYSTEM_OVERLOADED</span>
         </p>
         <div class="bsod-btn-wrapper">
-            <button class="custom-submit-btn" onclick="triggerReveal()"><img src="button.webp" alt="Override"></button>
+            <button class="custom-submit-btn" onclick="triggerReveal()">
+                <img src="button.webp" alt="Troubleshoot">
+            </button>
         </div>
     </div>
 
-    <!-- STAGE 3: Final Reveal -->
     <div id="reveal-screen">
         <div class="window-header"><div class="close-button-x">X</div></div>
         <div class="window-content">
             <div class="love-headline">i love you</div>
-            <img src="bouquet.png" class="bouquet-frame" alt="Bouquet Artwork">
+            <img src="bouquet.png" class="bouquet-frame" alt="Bouquet">
             <div class="bottom-tag-container">
                 <span class="developer-text">the developer of this mini game loves you! ❤️</span>
             </div>
         </div>
     </div>
-    <!-- RUNTIME LOGIC ENGINE SCRIPT -->
+</body>
+
     <script>
         let currentRound = 1;
-        // Strictly mapped key-value lookups to enable precise submission checks
+    
         const answers = { 1: 12, 2: 24 };
 
         function checkAnswer() {
@@ -356,7 +350,6 @@
                     alert("Incorrect! Give it another shot.");
                 }
             } else if (currentRound === 3) {
-                // Drop out fields immediately to prevent multi-submissions
                 inputField.style.display = "none";
                 document.getElementById('action-btn').style.display = "none";
                 
@@ -373,14 +366,14 @@
                         clearInterval(interval);
                         
                         setTimeout(() => {
-                            // Turn down ambient decorations when crash occurs to focus on pink error screen
                             document.querySelector('.bg-cat').style.display = "none";
                             document.querySelector('.bg-cherry').style.display = "none";
                             document.getElementById('bg-art').style.display = "none";
                             document.getElementById('game-screen').style.display = "none";
                             
-                            document.getElementById('crash-screen').style.display = "block";
-                            document.body.style.backgroundColor = "#ffd6e0";
+                            const crashScreen = document.getElementById('crash-screen');
+                            crashScreen.style.display = "flex";
+                            document.body.style.backgroundColor = "#ffffff"; 
                         }, 1200);
                     }
                     progressFill.style.width = progressValue + "%";
@@ -393,12 +386,10 @@
             document.getElementById('crash-screen').style.display = "none";
             document.body.style.background = "#ffdbe4"; 
             document.getElementById('reveal-screen').style.display = "block";
-            
-            // Initiates pink celebration confetti engine
+        
             initConfetti();
         }
 
-        /* COMPACT HIGH-PERFORMANCE PROCEDURAL CONFETTI SIMULATION ENGINE */
         function initConfetti() {
             const canvas = document.getElementById('confetti-canvas');
             const ctx = canvas.getContext('2d');
@@ -414,7 +405,6 @@
 
             const confettiCount = 135;
             const confettiPieces = [];
-            // Mapped pastel color palette: deep pinks, lilacs, light roses, white
             const colors = ['#f7d6db', '#ebaebd', '#dd829a', '#ea6b94', '#ffffff', '#e2c2ff'];
 
             for (let i = 0; i < confettiCount; i++) {
