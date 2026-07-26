@@ -82,7 +82,7 @@
             100% { transform: translateY(0px) rotate(0deg); }
         }
 
-        /* --- STAGE 1: MATH INTERACTIVE PANEL PANEL --- */
+        /* --- STAGE 1: MATH INTERACTIVE PANEL --- */
         #game-screen {
             text-align: center;
             max-width: 500px;
@@ -140,6 +140,7 @@
             width: 100%;
             max-width: 260px;
             transition: transform 0.05s;
+            display: inline-block;
         }
 
         .custom-submit-btn img {
@@ -332,65 +333,6 @@
     <img src="cat.webp" class="bg-element bg-cat" alt="Animated Cute Cat background asset">
     <img src="cherry.webp" class="bg-element bg-cherry" alt="Animated Cherry Blossom background asset">
     <canvas id="confetti-canvas"></canvas>
-
-    <!-- STAGE 1: THE ARITHMETIC TESTING CONTAINER -->
-            color: #e590af;
-            font-size: 1.4rem;
-        }
-
-        .window-content {
-            padding: 25px 20px;
-            text-align: center;
-        }
-
-        .love-headline {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #ea6b94; /* Playful signature pink title */
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 0px #ffffff;
-        }
-
-        /* ORIGINAL FLOWER BOUQUET ASSET CONTAINER */
-        .bouquet-frame {
-            max-width: 180px;
-            width: 80%;
-            height: auto;
-            margin: 0 auto 25px auto;
-            display: block;
-            animation: bounceTulips 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes bounceTulips {
-            0% { transform: translateY(0px) scale(1); }
-            100% { transform: translateY(-8px) scale(1.03); }
-        }
-
-        .bottom-tag-container {
-            display: inline-block;
-            border: 4px solid #f29cb7;
-            background-color: #ffffff; /* Clean high-contrast white tag background */
-            padding: 10px 20px;
-            margin-top: 10px;
-            box-shadow: 4px 4px 0px #f29cb7;
-        }
-
-        .developer-text {
-            color: #ea6b94; /* Highlighting your text pink */
-            font-weight: bold;
-            font-size: 1rem;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- VISUAL ASSET ENVIRONMENT LAYER GRIDS -->
-    <div id="bg-art"></div>
-    <img src="cat.webp" class="bg-element bg-cat" alt="Animated Cute Cat background asset">
-    <img src="cherry.webp" class="bg-element bg-cherry" alt="Animated Cherry Blossom background asset">
-    <canvas id="confetti-canvas"></canvas>
-
     <!-- STAGE 1: THE ARITHMETIC TESTING CONTAINER -->
     <div id="game-screen">
         <h2 id="level-title">Round 1 of 3: System Logic Check</h2>
@@ -459,7 +401,7 @@
     <!-- RUNTIME LOGIC ENGINE SCRIPT -->
     <script>
         let currentRound = 1;
-        // Strict evaluation matrices to run answer submissions correctly
+        // Strictly mapped arrays using correct key lookups to enable submission checks
         const answers = { 1: 12, 2: 24 };
 
         function checkAnswer() {
@@ -521,51 +463,6 @@
         function triggerReveal() {
             document.getElementById('crash-screen').style.display = "none";
             document.body.style.background = "#ffdbe4"; 
-            document.getElementById('reveal-screen').style.display = "block";
-            
-            // Initiates pink celebration confetti engine
-            initConfetti();
-        }
-
-        /* COMPACT HIGH-PERFORMANCE PROCEDURAL CONFETTI SIMULATION ENGINE */
-        function initConfetti() {
-            const canvas = document.getElementById('confetti-canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.style.display = 'block';
-
-            let width = canvas.width = window.innerWidth;
-            let height = canvas.height = window.innerHeight;
-
-            window.addEventListener('resize', () => {
-                width = canvas.width = window.innerWidth;
-                height = canvas.height = window.innerHeight;
-            });
-
-            const confettiCount = 135;
-            const confettiPieces = [];
-            // Mapped pastel color palette: deep pinks, lilacs, light roses, white
-            const colors = ['#f7d6db', '#ebaebd', '#dd829a', '#ea6b94', '#ffffff', '#e2c2ff'];
-
-            for (let i = 0; i < confettiCount; i++) {
-                confettiPieces.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height - height,
-                    r: Math.random() * 6 + 4,
-                    d: Math.random() * confettiCount,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    tilt: Math.random() * 10 - 5,
-                    tiltAngleIncremental: Math.random() * 0.06 + 0.02,
-                    tiltAngle: 0
-                });
-            }
-
-            function draw() {
-                ctx.clearRect(0, 0, width, height);
-
-                confettiPieces.forEach((p, index) => {
-                    p.tiltAngle += p.tiltAngleIncremental;
-                    p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
-'; 
             document.getElementById('reveal-screen').style.display = "block";
             
             // Initiates pink celebration confetti engine
