@@ -274,3 +274,267 @@
         }
         .decor-dot:nth-child(2) { background-color: #dca3cb; }
         .decor-dot:nth-child(3) { background-color: #ffffff; }
+        .close-button-x {
+            font-weight: bold;
+            color: #e590af;
+            font-size: 1.4rem;
+        }
+
+        .window-content {
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .love-headline {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ea6b94; /* Playful signature pink title */
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0px #ffffff;
+        }
+
+        /* ORIGINAL FLOWER BOUQUET ASSET CONTAINER */
+        .bouquet-frame {
+            max-width: 180px;
+            width: 80%;
+            height: auto;
+            margin: 0 auto 25px auto;
+            display: block;
+            animation: bounceTulips 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes bounceTulips {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(-8px) scale(1.03); }
+        }
+
+        .bottom-tag-container {
+            display: inline-block;
+            border: 4px solid #f29cb7;
+            background-color: #ffffff; /* Clean high-contrast white tag background */
+            padding: 10px 20px;
+            margin-top: 10px;
+            box-shadow: 4px 4px 0px #f29cb7;
+        }
+
+        .developer-text {
+            color: #ea6b94; /* Highlighting your text pink */
+            font-weight: bold;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- VISUAL ASSET ENVIRONMENT LAYER GRIDS -->
+    <div id="bg-art"></div>
+    <img src="cat.webp" class="bg-element bg-cat" alt="Animated Cute Cat background asset">
+    <img src="cherry.webp" class="bg-element bg-cherry" alt="Animated Cherry Blossom background asset">
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- STAGE 1: THE ARITHMETIC TESTING CONTAINER -->
+    <div id="game-screen">
+        <h2 id="level-title">Round 1 of 3: System Logic Check</h2>
+        <div class="math-box" id="equation-display">5 + 7 = ?</div>
+        
+        <!-- Interactive Text Input Field -->
+        <input type="number" id="answer-input" class="input-field" placeholder="Type answer here..." autocomplete="off">
+        
+        <!-- Rendered Using Your Custom Button Asset Graphic Directly -->
+        <button class="custom-submit-btn" id="action-btn" onclick="checkAnswer()">
+            <img src="button.webp" alt="Submit Answer Interaction Trigger">
+        </button>
+
+        <!-- Dynamic Process Loop Block for Trick Final Round -->
+        <div id="loading-container">
+            <p class="loading-alert-text">Allocating distance memory channels...</p>
+            <div class="progress-bar-bg">
+                <div id="progress-fill"></div>
+                <div id="progress-text">0%</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STAGE 2: CUSTOM PINK HIGH-CHAOS ERROR CRASH CORE -->
+    <div id="crash-screen">
+        <div class="bsod-title">CRITICAL_SYSTEM_FATAL_ERROR</div>
+        <p class="bsod-text">
+            An unrecoverable system exception 0x80070002 has interrupted computation tasks at math_core.sys. <br>
+            The execution thread has timed out due to extreme network baseline distortion parameters.
+            <br><br>
+            * Processing Phase 3 Pipeline Check: Halted at 99%.<br>
+            * Hardware Diagnostic Code: <span style="color: #ea6b94; font-weight: bold; background: #ffffff; padding: 2px 6px; border: 2px solid #000000;">SYSTEM_OVERLOADED_BY_HOW_HANDSOME_YOU_ARE</span>
+            <br><br>
+            To deploy internal safe-mode patch modules and run an automated diagnostic restore sequence, activate the override sequence module interface below.
+        </p>
+        <div class="bsod-btn-wrapper">
+            <button class="custom-submit-btn" onclick="triggerReveal()">
+                <img src="button.webp" alt="Troubleshoot Override Action">
+            </button>
+        </div>
+    </div>
+
+    <!-- STAGE 3: THE COMPLETED POPUP REVEAL CONTAINER -->
+    <div id="reveal-screen">
+        <div class="window-header">
+            <div class="header-decorations">
+                <div class="decor-dot"></div>
+                <div class="decor-dot"></div>
+                <div class="decor-dot"></div>
+            </div>
+            <div class="close-button-x">X</div>
+        </div>
+        
+        <div class="window-content">
+            <div class="love-headline">i love you</div>
+            
+            <!-- Renders your original standalone flower bouquet design file -->
+            <img src="bouquet.png" class="bouquet-frame" alt="Your Original Bouquet Artwork">
+            
+            <div class="bottom-tag-container">
+                <span class="developer-text">the developer of this mini game loves you! ❤️</span>
+            </div>
+        </div>
+    </div>
+    <!-- RUNTIME LOGIC ENGINE SCRIPT -->
+    <script>
+        let currentRound = 1;
+        // Strictly mapped key-value lookups to enable precise submission checks
+        const answers = { 1: 12, 2: 24 };
+
+        function checkAnswer() {
+            const inputField = document.getElementById('answer-input');
+            const userAnswer = parseInt(inputField.value);
+
+            if (currentRound === 1) {
+                if (userAnswer === answers[1]) {
+                    currentRound = 2;
+                    document.getElementById('level-title').innerText = "Round 2 of 3: System Logic Check";
+                    document.getElementById('equation-display').innerText = "11 + 13 = ?";
+                    inputField.value = "";
+                } else {
+                    alert("Incorrect! Give it another shot.");
+                }
+            } else if (currentRound === 2) {
+                if (userAnswer === answers[2]) {
+                    currentRound = 3;
+                    document.getElementById('level-title').innerText = "Round 3 of 3: Final Core Evaluation";
+                    document.getElementById('equation-display').innerText = "143 + 256 = ?";
+                    inputField.value = "";
+                } else {
+                    alert("Incorrect! Give it another shot.");
+                }
+            } else if (currentRound === 3) {
+                // Drop out fields immediately to prevent multi-submissions
+                inputField.style.display = "none";
+                document.getElementById('action-btn').style.display = "none";
+                
+                const loadingContainer = document.getElementById('loading-container');
+                const progressFill = document.getElementById('progress-fill');
+                const progressText = document.getElementById('progress-text');
+                loadingContainer.style.display = "block";
+
+                let progressValue = 0;
+                const interval = setInterval(() => {
+                    progressValue += Math.floor(Math.random() * 12) + 6;
+                    if (progressValue >= 99) {
+                        progressValue = 99;
+                        clearInterval(interval);
+                        
+                        setTimeout(() => {
+                            // Turn down ambient decorations when crash occurs to focus on pink error screen
+                            document.querySelector('.bg-cat').style.display = "none";
+                            document.querySelector('.bg-cherry').style.display = "none";
+                            document.getElementById('bg-art').style.display = "none";
+                            document.getElementById('game-screen').style.display = "none";
+                            
+                            document.getElementById('crash-screen').style.display = "block";
+                            document.body.style.backgroundColor = "#ffd6e0";
+                        }, 1200);
+                    }
+                    progressFill.style.width = progressValue + "%";
+                    progressText.innerText = progressValue + "%";
+                }, 160);
+            }
+        }
+
+        function triggerReveal() {
+            document.getElementById('crash-screen').style.display = "none";
+            document.body.style.background = "#ffdbe4"; 
+            document.getElementById('reveal-screen').style.display = "block";
+            
+            // Initiates pink celebration confetti engine
+            initConfetti();
+        }
+
+        /* COMPACT HIGH-PERFORMANCE PROCEDURAL CONFETTI SIMULATION ENGINE */
+        function initConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.style.display = 'block';
+
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            const confettiCount = 135;
+            const confettiPieces = [];
+            // Mapped pastel color palette: deep pinks, lilacs, light roses, white
+            const colors = ['#f7d6db', '#ebaebd', '#dd829a', '#ea6b94', '#ffffff', '#e2c2ff'];
+
+            for (let i = 0; i < confettiCount; i++) {
+                confettiPieces.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height - height,
+                    r: Math.random() * 6 + 4,
+                    d: Math.random() * confettiCount,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    tilt: Math.random() * 10 - 5,
+                    tiltAngleIncremental: Math.random() * 0.06 + 0.02,
+                    tiltAngle: 0
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+
+                confettiPieces.forEach((p, index) => {
+                    p.tiltAngle += p.tiltAngleIncremental;
+                    p.y += (Math.cos(p.d) + 3 + p.r / 2) / 2;
+                    p.x += Math.sin(p.tiltAngle);
+                    p.tilt = Math.sin(p.tiltAngle - index / 3) * 15;
+
+                    if (p.y > height) {
+                        confettiPieces[index] = {
+                            x: Math.random() * width,
+                            y: -20,
+                            r: p.r,
+                            d: p.d,
+                            color: p.color,
+                            tilt: p.tilt,
+                            tiltAngleIncremental: p.tiltAngleIncremental,
+                            tiltAngle: p.tiltAngle
+                        };
+                    }
+
+                    ctx.beginPath();
+                    ctx.lineWidth = p.r;
+                    ctx.strokeStyle = p.color;
+                    ctx.moveTo(p.x + p.tilt + p.r / 2, p.y);
+                    ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r / 2);
+                    ctx.stroke();
+                });
+
+                requestAnimationFrame(draw);
+            }
+
+            draw();
+        }
+    </script>
+</body>
+</html>
