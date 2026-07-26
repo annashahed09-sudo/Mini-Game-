@@ -21,7 +21,43 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            position: relative;
             transition: background 1s ease;
+        }
+
+        /* CUSTOM CHERRY BLOSSOM BACKGROUND FOR THE LANDING PAGE */
+        .blossom-background {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            width: 8px;
+            height: 8px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.85;
+            /* Recreating your pixel-art branch array layout dynamically */
+            box-shadow: 
+                /* Main Branch Core Grid Lines (Dark Maroon Wood) */
+                8px 32px 0 #3a0007, 16px 32px 0 #3a0007, 24px 32px 0 #3a0007, 32px 40px 0 #3a0007,
+                40px 48px 0 #3a0007, 48px 56px 0 #3a0007, 56px 56px 0 #3a0007, 64px 56px 0 #3a0007,
+                72px 64px 0 #3a0007, 80px 72px 0 #3a0007, 88px 80px 0 #3a0007, 96px 88px 0 #3a0007,
+                104px 96px 0 #3a0007, 112px 104px 0 #3a0007, 120px 104px 0 #3a0007, 136px 112px 0 #3a0007,
+                144px 120px 0 #3a0007, 152px 128px 0 #3a0007, 160px 128px 0 #3a0007, 168px 136px 0 #3a0007,
+                /* Upper Extension Sub-Branches */
+                88px 48px 0 #3a0007, 96px 40px 0 #3a0007, 128px 72px 0 #3a0007, 136px 80px 0 #3a0007,
+                144px 80px 0 #3a0007, 168px 40px 0 #3a0007, 176px 48px 0 #3a0007, 176px 56px 0 #3a0007,
+                /* Left Side Pastel Flower Bud Nodes */
+                8px 16px 0 #fcaec6, 16px 16px 0 #ea6b94, 24px 24px 0 #ffdbe4, 0px 24px 0 #ebaebd,
+                0px 40px 0 #ea6b94, 8px 48px 0 #fcaec6, 16px 48px 0 #ffdbe4, 24px 40px 0 #ebaebd,
+                /* Center Main Cluster Accents */
+                56px 40px 0 #fcaec6, 64px 40px 0 #ebaebd, 72px 48px 0 #ea6b94, 80px 48px 0 #ffdbe4,
+                88px 32px 0 #fcaec6, 96px 24px 0 #fcaec6, 104px 32px 0 #ea6b94, 112px 32px 0 #ffdbe4,
+                104px 48px 0 #ebaebd, 96px 56px 0 #fcaec6, 104px 64px 0 #ea6b94, 112px 64px 0 #ffdbe4,
+                /* Right Drooping Branch Petals Matrix */
+                136px 96px 0 #fcaec6, 144px 96px 0 #ebaebd, 152px 104px 0 #ffdbe4,
+                144px 144px 0 #ea6b94, 152px 144px 0 #fcaec6, 160px 152px 0 #ffdbe4,
+                176px 120px 0 #fcaec6, 184px 128px 0 #ebaebd, 192px 128px 0 #ffdbe4,
+                192px 144px 0 #ea6b94, 168px 104px 0 #ebaebd, 120px 120px 0 #fcaec6;
         }
 
         /* STAGE 1: MATH GAME UI */
@@ -30,10 +66,11 @@
             max-width: 500px;
             width: 90%;
             padding: 30px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(12, 15, 29, 0.75); /* Added semi-opacity so branch peeks out beautifully */
             border: 2px solid #3f4d71;
             border-radius: 12px;
             z-index: 10;
+            backdrop-filter: blur(4px);
         }
 
         h2 {
@@ -269,7 +306,66 @@
 </head>
 <body>
 
-    <!-- CONFETTI INJECTION ENGINE CANVAS -->
+    <!-- VISUAL ASSET LAYERS -->
+    <div id="bg-art" class="blossom-background"></div>
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- MATH GAME SCREEN -->
+    <div id="game-screen">
+        <h2 id="level-title">Round 1 of 3: System Logic Check</h2>
+        <div class="math-box" id="equation-display">5 + 7 = ?</div>
+        
+        <input type="number" id="answer-input" class="input-field" placeholder="Type answer here..." autocomplete="off">
+        <button class="btn" id="action-btn" onclick="checkAnswer()">Submit Answer</button>
+
+        <div id="loading-container">
+        .pixel-flower {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(20, 1fr);
+            grid-template-rows: repeat(20, 1fr);
+        }
+
+        /* Pastel Color Matrix Palette */
+        .bg-p1 { background-color: #f7d6db; } 
+        .bg-p2 { background-color: #ebaebd; } 
+        .bg-p3 { background-color: #dd829a; } 
+        .bg-g1 { background-color: #c5d4b1; } 
+        .bg-g2 { background-color: #9cb584; } 
+        .bg-g3 { background-color: #7b9463; } 
+
+        .bottom-tag-container {
+            display: inline-block;
+            border: 4px solid #f29cb7;
+            background-color: #ffffff;
+            padding: 8px 18px;
+            margin-top: 10px;
+        }
+
+        .developer-text {
+            color: #ea6b94;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        /* CONFETTI LAYER CANVAS */
+        #confetti-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 25;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- VISUAL ASSET LAYERS -->
+    <div id="bg-art" class="blossom-background"></div>
     <canvas id="confetti-canvas"></canvas>
 
     <!-- MATH GAME SCREEN -->
@@ -304,7 +400,7 @@
         <button class="btn bsod-btn" onclick="triggerReveal()">Troubleshoot Error</button>
     </div>
 
-    <!-- GRAND REVEAL WITH BOTH OF YOUR ORIGINAL DESIGN COMPONENTS -->
+    <!-- GRAND REVEAL FRAME -->
     <div id="reveal-screen">
         <div class="window-header">
             <div class="header-decorations">
@@ -332,7 +428,7 @@
 
                     <!-- Row 6-9: Main Center Focused Pink Blossom -->
                     <div class="bg-p1" style="grid-area: 6/8/9/11;"></div>
-                                        <div class="bg-p2" style="grid-area: 7/7/11/10;"></div>
+                    <div class="bg-p2" style="grid-area: 7/7/11/10;"></div>
                     <div class="bg-p2" style="grid-area: 6/11/9/13;"></div>
                     <div class="bg-p3" style="grid-area: 8/10/11/12;"></div>
 
@@ -403,6 +499,8 @@
                         clearInterval(interval);
                         
                         setTimeout(() => {
+                            // Turn off landing background asset when it crashes to blue screen
+                            document.getElementById('bg-art').style.display = "none";
                             document.getElementById('game-screen').style.display = "none";
                             document.getElementById('crash-screen').style.display = "block";
                             document.body.style.backgroundColor = "#0000aa";
@@ -418,12 +516,9 @@
             document.getElementById('crash-screen').style.display = "none";
             document.body.style.background = "#ffdbe4"; 
             document.getElementById('reveal-screen').style.display = "block";
-            
-            // Turn on and kickstart confetti storm engine
             initConfetti();
         }
 
-        /* REAL-TIME PROCEDURAL CONFETTI SIMULATION ENGINE */
         function initConfetti() {
             const canvas = document.getElementById('confetti-canvas');
             const ctx = canvas.getContext('2d');
@@ -439,7 +534,52 @@
 
             const confettiCount = 120;
             const confettiPieces = [];
-            // Palette matching your lovely aesthetics: pinks, soft roses, and lilacs
+            const colors = ['#f7d6db', '#ebaebd', '#dd829a', '#ea6b94', '#ffffff', '#e2c2ff'];
+
+            for (let i = 0; i < confettiCount; i++) {
+                confettiPieces.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height - height,
+                    r: Math.random() * 6 + 4,
+                    d: Math.random() * confettiCount,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    tilt: Math.random() * 10 - 5,
+                    tiltAngleIncremental: Math.random() * 0.07 + 0.02,
+                    tiltAngle: 0
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+
+gressFill.style.width = progressValue + "%";
+                    progressText.innerText = progressValue + "%";
+                }, 150);
+            }
+        }
+
+        function triggerReveal() {
+            document.getElementById('crash-screen').style.display = "none";
+            document.body.style.background = "#ffdbe4"; 
+            document.getElementById('reveal-screen').style.display = "block";
+            initConfetti();
+        }
+
+        function initConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.style.display = 'block';
+
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            const confettiCount = 120;
+            const confettiPieces = [];
             const colors = ['#f7d6db', '#ebaebd', '#dd829a', '#ea6b94', '#ffffff', '#e2c2ff'];
 
             for (let i = 0; i < confettiCount; i++) {
@@ -464,7 +604,6 @@
                     p.x += Math.sin(p.tiltAngle);
                     p.tilt = Math.sin(p.tiltAngle - index / 3) * 15;
 
-                    // If confetti touches bottom edge, reset it back to the top sky grid
                     if (p.y > height) {
                         confettiPieces[index] = {
                             x: Math.random() * width,
